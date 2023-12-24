@@ -1,0 +1,31 @@
+.striped-table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.striped-table th,
+.striped-table td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.striped-table td{
+    transition: all 0.3s;
+}
+
+.striped-table td:hover{
+    background-color: #c3c3c3;
+}
+
+.striped-table thead{
+    background-color: #c3c3c3;
+}
+
+.striped-table tbody tr:nth-child(even) {
+    background-color: #e0e0e0;
+}
+
+.striped-table tbody tr:nth-child(odd) {
+    background-color: #ebebeb;
+}
