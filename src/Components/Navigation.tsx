@@ -42,7 +42,6 @@ function Navigation() {
                     </span>
                 </div>
             </Link>
-
         </section>
     );
 }

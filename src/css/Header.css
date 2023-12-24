@@ -1,53 +1,61 @@
- .breadcrumbs {
-     list-style: none;
-     display: flex;
-     gap: 0.75rem;
-     background: white;
-     padding: 0.75rem;
+.breadcrumbs {
+    list-style: none;
+    display: flex;
+    gap: 0.75rem;
+    background: white;
+    padding: 0.75rem;
 
-     transition: all 0.3s;
- }
+    transition: all 0.3s;
+}
 
- .breadcrumbs-item {
+.breadcrumbs-item {
     margin-right: 0.5rem;
-     padding: 0.75rem 0.75rem 0.75rem 1.5rem;
-     background: grey;
-     color: white;
-     text-decoration: none;
-     text-transform: uppercase;
-     letter-spacing: 1px;
-     position: relative;
+    padding: 0.75rem 0.75rem 0.75rem 1.5rem;
+    background: grey;
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
 
-     transition: all 0.3s;
- }
+    transition: all 0.3s;
+}
 
- .breadcrumbs-item::before {
-     background: grey;
- }
+a {
+    text-decoration: none;
+}
 
- .breadcrumbs-item::after {
-     left: 100%;
-     background: grey;
- }
+.breadcrumbs-item::before {
+    background: grey;
+}
 
- .breadcrumbs-item:first-child {
-     padding: 0.75rem;
-     border-radius: 0.25rem 0 0 0.25rem;
- }
+.breadcrumbs-item::after {
+    left: 100%;
+    background: grey;
+}
 
- .breadcrumbs-item:first-child::before {
-     display: none;
- }
+.breadcrumbs-item:first-child {
+    padding: 0.75rem;
+    border-radius: 0.25rem 0 0 0.25rem;
+}
 
- .breadcrumbs-item:last-child {
-     border-radius: 0 0.25rem 0.25rem 0;
- }
+.breadcrumbs-item:first-child::before {
+    display: none;
+}
 
- .breadcrumbs-item:last-child::after {
-     display: none;
- }
+.breadcrumbs-item:last-child {
+    border-radius: 0 0.25rem 0.25rem 0;
+}
 
- .breadcrumbs-item:hover,
- .breadcrumbs-item:hover::after {
-     background: rgb(73, 73, 73);
- }
+.breadcrumbs-item:last-child::after {
+    display: none;
+}
+
+.breadcrumbs-item:hover,
+.breadcrumbs-item:hover::after {
+    background: rgb(73, 73, 73);
+}
+
+.container{
+    display:flex;
+}
