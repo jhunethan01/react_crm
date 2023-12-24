@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import "../css/Header.css";
 
@@ -11,23 +11,20 @@ function Header() {
     <header>
       <div className="container">
         <ul className="breadcrumbs">
-          <a href="/" className="breadcrumbs-item">
-            <li>Dashboard</li>
-          </a>
+          <Link to='/'>
+              <li className='breadcrumbs-item'>
+                Dashboard
+              </li>
+            </Link>
           {breadcrumbs.map((crumb, index) => (
-            <a key={index} href={crumb} className="breadcrumbs-item">
-              <li>
+            <Link key={index} to={crumb}>
+              <li className='breadcrumbs-item'>
                 {index === breadcrumbs.length - 1 ? crumb : <a href={`/${breadcrumbs.slice(0, index + 1).join('/')}`}>{crumb}</a>}
               </li>
-            </a>
+            </Link>
           ))}
         </ul>
 
-        <ul className="user-menu">
-          <li><a href="#">Profile</a></li>
-          <li><a href="#">Settings</a></li>
-          <li><a href="#">Logout</a></li>
-        </ul>
       </div>
     </header>
 
