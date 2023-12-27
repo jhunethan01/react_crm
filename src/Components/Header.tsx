@@ -9,13 +9,13 @@ function Header() {
 
   return (
     <header>
-      <div className="container">
+      <div className="header-container">
         <ul className="breadcrumbs">
           <Link to='/'>
-              <li className='breadcrumbs-item'>
-                Dashboard
-              </li>
-            </Link>
+            <li className='breadcrumbs-item'>
+              Dashboard
+            </li>
+          </Link>
           {breadcrumbs.map((crumb, index) => (
             <Link key={index} to={crumb}>
               <li className='breadcrumbs-item'>
@@ -25,6 +25,9 @@ function Header() {
           ))}
         </ul>
 
+        <div className='header-greeting'>
+          Hi, User
+        </div>
       </div>
     </header>
 
