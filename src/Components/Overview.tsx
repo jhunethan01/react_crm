@@ -1,9 +1,24 @@
 import React from 'react';
-
 import '../css/Overview.css';
 
-function Overview({customerList, resultsList}) {
-  
+import Chart from "./Chart.tsx";
+
+function Overview({ customerList, resultsList }) {
+
+  // Use a Map to store date and frequency count
+  const dateFrequencyMap = {};
+
+  // Iterate over objects and update map
+  for (const obj of resultsList.results) {
+    const date = obj.date.slice(0, 10); // Extract date portion (YYYY-MM-DD)
+    if (!dateFrequencyMap[date]) dateFrequencyMap[date] = 1;
+    else dateFrequencyMap[date]++;
+  }
+
+  // Extract data for dataX and dataY from the map
+  const dataX = [...Object.keys(dateFrequencyMap)]; // Dates
+  const dataY = [...Object.values(dateFrequencyMap)]; // Frequencies
+
   return (
     <section className='dashboard-container'>
       <h1 className='tab-title'>
@@ -23,14 +38,15 @@ function Overview({customerList, resultsList}) {
           <p className='dashboard_statistic-number'>
             {customerList.customers.length}
           </p>
-          <button>See Customers</button>
           hover and goes pink saying see customer overlay?
         </div>
         <div className="dashboard_statistic">
           <h3>
             Total Courses Completed
           </h3>
-          <p>statistic</p>
+          <p className='dashboard_statistic-number'>
+            {resultsList.results.length}
+          </p>
         </div>
         <div className="dashboard_statistic">
           <h3>
@@ -44,6 +60,10 @@ function Overview({customerList, resultsList}) {
           </h3>
           <p>statistic</p>
         </div>
+      </div>
+      <div>
+        <Chart dataX={dataX} dataY={dataY}>
+        </Chart>
       </div>
     </section>
   );
