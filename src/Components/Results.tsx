@@ -2,7 +2,16 @@ import React from 'react';
 
 import '../css/Results.css';
 
-function Results() {
+function Results({resultsList}) {
+  interface Result {
+    course_id: number;
+    user_id: number;
+    score: number;
+    date: string;
+  }
+
+  console.log(resultsList)
+
   return (
     <section className='dashboard-container'>
       <h1 className='tab-title'>
@@ -19,10 +28,7 @@ function Results() {
               Course ID
             </td>
             <td>
-              First Name
-            </td>
-            <td>
-              Last Name
+              Customer ID
             </td>
             <td>
               Score
@@ -30,24 +36,21 @@ function Results() {
             <td>
               Date Completed
             </td>
+            <td>
+              
+            </td>
           </tr>
 
         </thead>
         <tbody>
-          <tr>
-            <td>Data 1</td>
-            <td>Data 2</td>
-            <td>Data 3</td>
-            <td>Data 4</td>
-            <td>Data 5</td>
-          </tr>
-          <tr>
-            <td>Data 4</td>
-            <td>Data 5</td>
-            <td>Data 6</td>
-            <td>Data 7</td>
-            <td>Data 8</td>
-          </tr>
+        {resultsList.results.map((result: Result) => (
+            <tr>
+                <td>{result.course_id}</td>
+                <td>{result.user_id}</td>
+                <td>{result.score}</td>
+                <td>{result.date}</td>
+            </tr>
+          ))}
         </tbody>
 
       </table>

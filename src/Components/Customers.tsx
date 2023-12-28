@@ -2,7 +2,16 @@ import React from 'react';
 
 import '../css/Customers.css';
 
-function Customers() {
+function Customers({ customerList }) {
+  interface Customer {
+    id: number;
+    first_name: string;
+    last_name: string;
+    email: string;
+    number_courses_completed: number;
+    created: string;
+  }
+  console.log('customers',customerList)
   return (
     <section className='dashboard-container'>
       <h1 className='tab-title'>
@@ -34,20 +43,15 @@ function Customers() {
 
         </thead>
         <tbody>
-          <tr>
-            <td>Data 1</td>
-            <td>Data 2</td>
-            <td>Data 3</td>
-            <td>Data 4</td>
-            <td>Data 5</td>
-          </tr>
-          <tr>
-            <td>Data 4</td>
-            <td>Data 5</td>
-            <td>Data 6</td>
-            <td>Data 7</td>
-            <td>Data 8</td>
-          </tr>
+          {customerList.customers.map((customer: Customer) => (
+            <tr>
+                <td>{customer.first_name}</td>
+                <td>{customer.last_name}</td>
+                <td>{customer.email}</td>
+                <td>{customer.number_courses_completed}</td>
+                <td>{customer.created}</td>
+            </tr>
+          ))}
         </tbody>
 
       </table>

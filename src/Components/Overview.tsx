@@ -2,7 +2,8 @@ import React from 'react';
 
 import '../css/Overview.css';
 
-function Overview() {
+function Overview({customerList, resultsList}) {
+  
   return (
     <section className='dashboard-container'>
       <h1 className='tab-title'>
@@ -19,11 +20,15 @@ function Overview() {
           <h3>
             Number of Customers
           </h3>
-          <p className='dashboard_statistic-number'>55</p>
+          <p className='dashboard_statistic-number'>
+            {customerList.customers.length}
+          </p>
+          <button>See Customers</button>
+          hover and goes pink saying see customer overlay?
         </div>
         <div className="dashboard_statistic">
           <h3>
-            Title
+            Total Courses Completed
           </h3>
           <p>statistic</p>
         </div>
