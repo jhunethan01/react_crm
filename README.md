@@ -14,11 +14,11 @@ API documentation: [https://github.com/jhunethan01/nodejs_crm]
 
 Technologies:
 
-React
-JavaScript/TypeScript
-Chart.js
-Node.js
-Express
-SQL
+- React
+- JavaScript/TypeScript
+- Chart.js
+- Node.js
+- Express
+- SQL
 
 Hosted at [https://delightful-marzipan-66e584.netlify.app/]
