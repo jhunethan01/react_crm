@@ -34,14 +34,14 @@ function Navigation() {
                     </span>
                 </div>
             </Link>
-            <Link to="/account">
+            {/* <Link to="/account">
                 <div className="tab_link">
                     <FontAwesomeIcon icon={faUser} />
                     <span>
                         Account
                     </span>
                 </div>
-            </Link>
+            </Link> */}
         </section>
     );
 }

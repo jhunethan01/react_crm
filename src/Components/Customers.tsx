@@ -1,6 +1,8 @@
 import React from 'react';
 
 import '../css/Customers.css';
+import { Link } from 'react-router-dom';
+import moment from 'moment';
 
 function Customers({ customerList }) {
   interface Customer {
@@ -39,6 +41,9 @@ function Customers({ customerList }) {
             <td>
               Created
             </td>
+            <td>
+
+            </td>
           </tr>
 
         </thead>
@@ -49,7 +54,12 @@ function Customers({ customerList }) {
                 <td>{customer.last_name}</td>
                 <td>{customer.email}</td>
                 <td>{customer.number_courses_completed}</td>
-                <td>{customer.created}</td>
+                <td>{moment(customer.created).format('DD MMMM YYYY')}</td>
+                <td>
+                  <Link to={`/customers/${customer.id}`}>
+                    <button className='customer-link'>View</button>
+                  </Link>
+                </td>
             </tr>
           ))}
         </tbody>

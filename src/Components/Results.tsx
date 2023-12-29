@@ -1,6 +1,8 @@
 import React from 'react';
 
 import '../css/Results.css';
+import { Link } from 'react-router-dom';
+import moment from 'moment';
 
 function Results({resultsList}) {
   interface Result {
@@ -51,7 +53,12 @@ function Results({resultsList}) {
                 <td>{result.course_id}</td>
                 <td>{result.user_id}</td>
                 <td>{result.score}</td>
-                <td>{result.date}</td>
+                <td>{moment(result.date).format('DD MMMM YYYY')}</td>
+                <td>
+                  <Link to={`/customers/${result.user_id}`}>
+                    <button className='customer-link'>View</button>
+                  </Link>
+                </td>
             </tr>
           ))}
         </tbody>

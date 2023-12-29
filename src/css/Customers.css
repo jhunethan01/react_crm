@@ -29,3 +29,15 @@
 .striped-table tbody tr:nth-child(odd) {
     background-color: #ebebeb;
 }
+
+.customer-link{
+    background-color: rgb(61, 61, 61);
+    color: white;
+
+    border: none;
+    padding: 10px;
+
+    width: 100%;
+
+    cursor: pointer;
+}

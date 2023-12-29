@@ -9,6 +9,7 @@ import Accounts from "./Accounts.tsx";
 import Header from "./Header.tsx";
 import FlexVertical from "./FlexVertical.tsx";
 import Overview from "./Overview.tsx";
+import ViewCustomer from './ViewCustomer.tsx';
 
 function Dashboard() {
   interface Customer {
@@ -19,7 +20,6 @@ function Dashboard() {
     number_courses_completed: number;
     created: string;
   }
-  
 
   interface Result {
     course_id: number;
@@ -97,6 +97,7 @@ function Dashboard() {
             <Route path='/customers' element={<Customers customerList={customerList} />}></Route>
             <Route path='/results' element={<Results resultsList={resultsList} />}></Route>
             <Route path='/account' element={<Accounts />}></Route>
+            <Route path='/customers/:customer_id' element={<ViewCustomer />}></Route>
           </Routes>
         </FlexVertical>
       </BrowserRouter>
