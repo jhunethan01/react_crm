@@ -28,7 +28,7 @@
     background: rgb(61, 61, 61);
     color: white;
 
-    min-width: 150px;
+    min-width: 20%;
     height: 100px;
 
     padding: 10px 20px;
@@ -42,4 +42,8 @@
     margin: 5px auto;
     font-size: 30px;
     font-weight: bold;
+}
+
+.line-break{
+    width: 100%;
 }

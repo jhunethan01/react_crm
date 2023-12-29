@@ -26,6 +26,7 @@ function Dashboard() {
     user_id: number;
     score: number;
     date: string;
+    name: string;
   }
 
   interface ResultsList {
@@ -33,7 +34,7 @@ function Dashboard() {
   }
   
   interface CustomerList {
-    customers: Customer[]; // Enforce that the array elements are of type Customer
+    customers: Customer[];
   }
 
   const [customerList, setCustomerList] = useState<CustomerList>({ customers: [] });
@@ -46,7 +47,6 @@ function Dashboard() {
       try {
         const response = await fetch('https://nodejs-crm-ca3cef4f2948.herokuapp.com/customers');
         const data = await response.json();
-        console.log(response);
         setCustomerList(data);
       } catch (error) {
         setError(error);
@@ -58,12 +58,23 @@ function Dashboard() {
     fetchCustomers();
   }, []); 
 
+  function sortByDate(arr) {
+    return arr.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  }
+  
   useEffect(() => {
     const fetchResults = async () => {
       try {
         const response = await fetch('https://nodejs-crm-ca3cef4f2948.herokuapp.com/results');
         const data = await response.json();
-        console.log('results',response);
+        data.results = sortByDate(data.results);
+        data.results.map((result) => {
+          const matchingCustomer = customerList.customers.find((cust) => cust.id === result.user_id);
+          if (matchingCustomer) {
+            result['name'] = matchingCustomer.first_name + ' ' + matchingCustomer.last_name;
+          }
+        });
+        
         setResultsList(data);
       } catch (error) {
         setError(error);
@@ -73,7 +84,7 @@ function Dashboard() {
     };
 
     fetchResults();
-  }, []); 
+  }, [customerList]); 
 
   return (
     <section className='dashboard_container'>

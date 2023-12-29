@@ -2,6 +2,7 @@ import React from 'react';
 import '../css/Overview.css';
 
 import Chart from "./Chart.tsx";
+import ResultsHistory from "./ResultsHistory.tsx";
 
 function Overview({ customerList, resultsList }) {
 
@@ -60,10 +61,9 @@ function Overview({ customerList, resultsList }) {
           </h3>
           <p>statistic</p>
         </div>
-      </div>
-      <div>
-        <Chart dataX={dataX} dataY={dataY}>
-        </Chart>
+        <div className='line-break' />
+        <ResultsHistory results={resultsList.results} />
+        <Chart dataX={dataX} dataY={dataY} />
       </div>
     </section>
   );

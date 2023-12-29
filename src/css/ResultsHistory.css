@@ -1,0 +1,14 @@
+.history-container{
+    width: auto;
+}
+
+.history-record{
+    padding:5px 10px;
+}
+
+.history-subtitle{
+    margin: 0 0 5px 0;
+    color: rgb(49, 49, 49);
+
+    font-size: 14px;
+}

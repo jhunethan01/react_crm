@@ -8,9 +8,8 @@ function Results({resultsList}) {
     user_id: number;
     score: number;
     date: string;
+    name: string;
   }
-
-  console.log(resultsList)
 
   return (
     <section className='dashboard-container'>
@@ -24,6 +23,9 @@ function Results({resultsList}) {
       <table className='striped-table'>
         <thead>
           <tr>
+            <td>
+              Customer Name
+            </td>
             <td>
               Course ID
             </td>
@@ -45,6 +47,7 @@ function Results({resultsList}) {
         <tbody>
         {resultsList.results.map((result: Result) => (
             <tr>
+                <td>{result.name}</td>
                 <td>{result.course_id}</td>
                 <td>{result.user_id}</td>
                 <td>{result.score}</td>
