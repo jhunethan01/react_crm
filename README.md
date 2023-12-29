@@ -10,7 +10,7 @@ Visualize customer trends: Uncover insights with charts and graphs.
 API Integration:
 
 Seamlessly communicates with my backend API.
-API documentation: [https://github.com/jhunethan01/nodejs_crm]
+API Code: [https://github.com/jhunethan01/nodejs_crm]
 
 Technologies:
 
