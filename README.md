@@ -20,3 +20,5 @@ Chart.js
 Node.js
 Express
 SQL
+
+Hosted at [https://delightful-marzipan-66e584.netlify.app/]
