@@ -7,9 +7,6 @@ Key Features:
 Centralized customer profiles: Access customers, activity history, and relevant data at a glance.
 Visualize customer trends: Uncover insights with charts and graphs.
 
-API Integration:
-
-Seamlessly communicates with my backend API.
 API Code: [https://github.com/jhunethan01/nodejs_crm]
 
 Technologies:
