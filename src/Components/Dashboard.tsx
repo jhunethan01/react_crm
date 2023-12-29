@@ -39,8 +39,6 @@ function Dashboard() {
 
   const [customerList, setCustomerList] = useState<CustomerList>({ customers: [] });
   const [resultsList, setResultsList] = useState<ResultsList>({ results: [] });
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchCustomers = async () => {
@@ -49,9 +47,7 @@ function Dashboard() {
         const data = await response.json();
         setCustomerList(data);
       } catch (error) {
-        setError(error);
-      } finally {
-        setIsLoading(false);
+        console.log(error);
       }
     };
 
@@ -73,14 +69,13 @@ function Dashboard() {
           if (matchingCustomer) {
             result['name'] = matchingCustomer.first_name + ' ' + matchingCustomer.last_name;
           }
+          return true;
         });
         
         setResultsList(data);
       } catch (error) {
-        setError(error);
-      } finally {
-        setIsLoading(false);
-      }
+        console.log(error);
+      } 
     };
 
     fetchResults();

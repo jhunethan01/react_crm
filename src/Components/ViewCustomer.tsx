@@ -17,8 +17,6 @@ function ViewCustomer() {
         number_courses_completed: 0,
         created: 'not set',
     });
-    const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState(null);
 
     interface Customer {
         id: number;
@@ -36,14 +34,12 @@ function ViewCustomer() {
                 const data = await response.json();
                 setCustomer(data.customer);
             } catch (error) {
-                setError(error);
-            } finally {
-                setIsLoading(false);
-            }
+                console.log(error);
+            } 
         };
 
         fetchCustomer();
-    }, []);
+    });
 
     useEffect(() => {
         const fetchResults = async () => {
@@ -53,14 +49,12 @@ function ViewCustomer() {
                 console.log('data', data);
                 setResults(data.results);
             } catch (error) {
-                setError(error);
-            } finally {
-                setIsLoading(false);
-            }
+                console.log(error);
+            } 
         };
 
         fetchResults();
-    }, []);
+    });
 
     return (
         <section className='dashboard-container'>

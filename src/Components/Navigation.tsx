@@ -3,7 +3,7 @@ import React from 'react';
 import '../css/Navigation.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { faHouse, faPerson, faSquarePollVertical, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faHouse, faPerson, faSquarePollVertical } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
 function Navigation() {
