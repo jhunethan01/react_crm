@@ -1,6 +1,6 @@
 import React from 'react';
 
-import '../css/Navigation.css';
+import '../../css/Navigation.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { faHouse, faPerson, faSquarePollVertical } from '@fortawesome/free-solid-svg-icons';
@@ -34,14 +34,6 @@ function Navigation() {
                     </span>
                 </div>
             </Link>
-            {/* <Link to="/account">
-                <div className="tab_link">
-                    <FontAwesomeIcon icon={faUser} />
-                    <span>
-                        Account
-                    </span>
-                </div>
-            </Link> */}
         </section>
     );
 }

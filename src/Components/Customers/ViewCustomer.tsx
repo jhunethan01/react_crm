@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import '../css/ViewCustomer.css';
-import ResultsHistory from './ResultsHistory.tsx';
+import '../../css/ViewCustomer.css';
+import ResultsHistory from '../Dashboard/ResultsHistory.tsx';
 import moment from 'moment';
 
 function ViewCustomer() {

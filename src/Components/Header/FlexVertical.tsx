@@ -1,6 +1,6 @@
 import React from 'react';
 
-import '../css/FlexVertical.css';
+import '../../css/FlexVertical.css';
 
 function FlexVertical({ children }) {
   return (

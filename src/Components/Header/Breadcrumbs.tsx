@@ -1,15 +1,12 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
-import "../css/Header.css";
+function Breadcrumbs() {
+    const { pathname } = useLocation();
+    const breadcrumbs = pathname.split('/').filter(path => path);
 
-function Header() {
-  const { pathname } = useLocation();
-  const breadcrumbs = pathname.split('/').filter(path => path); // Remove empty path segments
-
-  return (
-    <header>
-      <div className="header-container">
+    return (
+        // JSX code for your Breadcrumbs component
         <ul className="breadcrumbs">
           <Link to='/'>
             <li className='breadcrumbs-item'>
@@ -24,16 +21,7 @@ function Header() {
             </Link>
           ))}
         </ul>
+    );
+};
 
-        <div className='header-greeting'>
-          Hi, User
-        </div>
-      </div>
-    </header>
-
-  );
-}
-
-<style></style>
-
-export default Header;
+export default Breadcrumbs;

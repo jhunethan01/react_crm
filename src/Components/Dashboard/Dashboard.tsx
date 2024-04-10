@@ -1,15 +1,14 @@
 import React, { useState ,useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import '../css/Dashboard.css';
+import '../../css/Dashboard.css';
 import Navigation from "./Navigation.tsx";
-import Customers from "./Customers.tsx";
-import Results from "./Results.tsx";
-import Accounts from "./Accounts.tsx";
-import Header from "./Header.tsx";
-import FlexVertical from "./FlexVertical.tsx";
-import Overview from "./Overview.tsx";
-import ViewCustomer from './ViewCustomer.tsx';
+import Customers from "../Customers/Customers.tsx";
+import Results from "../Results/Results.tsx";
+import Header from "../Header/Header.tsx";
+import FlexVertical from "../Header/FlexVertical.tsx";
+import Overview from "../Overview/Overview.tsx";
+import ViewCustomer from '../Customers/ViewCustomer.tsx';
 
 function Dashboard() {
   interface Customer {
@@ -91,7 +90,6 @@ function Dashboard() {
             <Route path='/' element={<Overview customerList={customerList} resultsList={resultsList} />}></Route>
             <Route path='/customers' element={<Customers customerList={customerList} />}></Route>
             <Route path='/results' element={<Results resultsList={resultsList} />}></Route>
-            <Route path='/account' element={<Accounts />}></Route>
             <Route path='/customers/:customer_id' element={<ViewCustomer />}></Route>
           </Routes>
         </FlexVertical>

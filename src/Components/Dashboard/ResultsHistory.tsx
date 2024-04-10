@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 
-import '../css/ResultsHistory.css';
+import '../../css/ResultsHistory.css';
 
 function ResultsHistory({results}) {
   interface Result {
@@ -9,6 +9,7 @@ function ResultsHistory({results}) {
     user_id: number;
     score: number;
     date: string;
+    name: string;
   }
 
   return (

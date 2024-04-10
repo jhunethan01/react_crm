@@ -3,7 +3,7 @@ import { Chart as ChartJS, CategoryScale } from 'chart.js/auto';
 import { Line } from 'react-chartjs-2';
 import 'chart.js/auto';
 
-import '../css/Chart.css'
+import '../../css/Chart.css'
 
 const Chart = ({ dataX, dataY }) => {
     useEffect(() => {
