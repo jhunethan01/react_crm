@@ -38,8 +38,8 @@ function ResultsTable({ resultsList }) {
 
             </thead>
             <tbody>
-                {resultsList.results.map((result: Result) => (
-                    <tr>
+                {resultsList.map((result: Result, index) => (
+                    <tr key={index}>
                         <td>{result.name}</td>
                         <td>{result.course_id}</td>
                         <td>{result.user_id}</td>

@@ -1,4 +1,4 @@
-import React, { useState ,useEffect } from 'react';
+import React, { useState, useEffect, createContext } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import '../../css/Dashboard.css';
@@ -10,53 +10,51 @@ import FlexVertical from "../Header/FlexVertical.tsx";
 import Overview from "../Overview/Overview.tsx";
 import ViewCustomer from '../Customers/ViewCustomer.tsx';
 
+interface Customer {
+  id: number;
+  first_name: string;
+  last_name: string;
+  email: string;
+  number_courses_completed: number;
+  created: string;
+}
+
+interface Result {
+  course_id: number;
+  user_id: number;
+  score: number;
+  date: string;
+  name: string;
+}
+
+type ResultsList = Result[];
+
+type CustomerList = Customer[];
+
+export const CustomerContext = createContext<{customerList: CustomerList, setCustomerList, resultsList: ResultsList, setResultsList} | {customerList: [], resultsList: []}>({customerList: [], resultsList: []})
+
 function Dashboard() {
-  interface Customer {
-    id: number;
-    first_name: string;
-    last_name: string;
-    email: string;
-    number_courses_completed: number;
-    created: string;
-  }
-
-  interface Result {
-    course_id: number;
-    user_id: number;
-    score: number;
-    date: string;
-    name: string;
-  }
-
-  interface ResultsList {
-    results: Result[];
-  }
-  
-  interface CustomerList {
-    customers: Customer[];
-  }
-
-  const [customerList, setCustomerList] = useState<CustomerList>({ customers: [] });
-  const [resultsList, setResultsList] = useState<ResultsList>({ results: [] });
+  const [customerList, setCustomerList] = useState<CustomerList>([]);
+  const [resultsList, setResultsList] = useState<ResultsList>([]);
 
   useEffect(() => {
     const fetchCustomers = async () => {
       try {
         const response = await fetch('https://nodejs-crm-ca3cef4f2948.herokuapp.com/customers');
         const data = await response.json();
-        setCustomerList(data);
+        setCustomerList(data.customers);
       } catch (error) {
         console.log(error);
       }
     };
 
     fetchCustomers();
-  }, []); 
+  }, []);
 
   function sortByDate(arr) {
     return arr.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
   }
-  
+
   useEffect(() => {
     const fetchResults = async () => {
       try {
@@ -64,36 +62,38 @@ function Dashboard() {
         const data = await response.json();
         data.results = sortByDate(data.results);
         data.results.map((result) => {
-          const matchingCustomer = customerList.customers.find((cust) => cust.id === result.user_id);
+          const matchingCustomer = customerList?.find((cust) => cust.id === result.user_id);
           if (matchingCustomer) {
             result['name'] = matchingCustomer.first_name + ' ' + matchingCustomer.last_name;
           }
           return true;
         });
-        
-        setResultsList(data);
+
+        setResultsList(data.results);
       } catch (error) {
         console.log(error);
-      } 
+      }
     };
 
     fetchResults();
-  }, [customerList]); 
+  }, [customerList]);
 
   return (
     <section className='dashboard_container'>
-      <BrowserRouter>
-        <Navigation />
-        <FlexVertical>
-          <Header />
-          <Routes>
-            <Route path='/' element={<Overview customerList={customerList} resultsList={resultsList} />}></Route>
-            <Route path='/customers' element={<Customers customerList={customerList} />}></Route>
-            <Route path='/results' element={<Results resultsList={resultsList} />}></Route>
-            <Route path='/customers/:customer_id' element={<ViewCustomer />}></Route>
-          </Routes>
-        </FlexVertical>
-      </BrowserRouter>
+      <CustomerContext.Provider value={{customerList, setCustomerList,resultsList,setResultsList}}>
+        <BrowserRouter>
+          <Navigation />
+          <FlexVertical>
+            <Header />
+            <Routes>
+              <Route path='/' element={<Overview customerList={customerList} resultsList={resultsList} />}></Route>
+              <Route path='/customers' element={<Customers />}></Route>
+              <Route path='/results' element={<Results resultsList={resultsList} />}></Route>
+              <Route path='/customers/:customer_id' element={<ViewCustomer />}></Route>
+            </Routes>
+          </FlexVertical>
+        </BrowserRouter>
+      </CustomerContext.Provider>
     </section>
   );
 }
