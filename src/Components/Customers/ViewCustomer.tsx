@@ -30,7 +30,7 @@ function ViewCustomer() {
     useEffect(() => {
         const fetchCustomer = async () => {
             try {
-                const response = await fetch('https://nodejs-crm-ca3cef4f2948.herokuapp.com/customer/' + customer_id);
+                const response = await fetch('https://nodejs-crm.vercel.app/customer/' + customer_id);
                 const data = await response.json();
                 setCustomer(data.customer);
             } catch (error) {
@@ -44,7 +44,7 @@ function ViewCustomer() {
     useEffect(() => {
         const fetchResults = async () => {
             try {
-                const response = await fetch('https://nodejs-crm-ca3cef4f2948.herokuapp.com/results?userId=' + customer_id);
+                const response = await fetch('https://nodejs-crm.vercel.app/results?userId=' + customer_id);
                 const data = await response.json();
                 console.log('data', data);
                 setResults(data.results);
