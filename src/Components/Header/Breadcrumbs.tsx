@@ -16,7 +16,7 @@ function Breadcrumbs() {
           {breadcrumbs.map((crumb, index) => (
             <Link key={index} to={crumb}>
               <li className='breadcrumbs-item'>
-                {index === breadcrumbs.length - 1 ? crumb : <a href={`/${breadcrumbs.slice(0, index + 1).join('/')}`}>{crumb}</a>}
+                {index === breadcrumbs.length - 1 ? crumb : crumb.charAt(0).toUpperCase() + crumb.slice(1)}
               </li>
             </Link>
           ))}

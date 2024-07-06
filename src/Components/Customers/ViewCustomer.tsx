@@ -35,26 +35,25 @@ function ViewCustomer() {
                 setCustomer(data.customer);
             } catch (error) {
                 console.log(error);
-            } 
+            }
         };
 
         fetchCustomer();
-    });
+    }, [customer_id]);
 
     useEffect(() => {
         const fetchResults = async () => {
             try {
                 const response = await fetch('https://nodejs-crm.vercel.app/results?userId=' + customer_id);
                 const data = await response.json();
-                console.log('data', data);
                 setResults(data.results);
             } catch (error) {
                 console.log(error);
-            } 
+            }
         };
 
         fetchResults();
-    });
+    }, [customer_id]);
 
     return (
         <section className='dashboard-container'>
@@ -66,46 +65,48 @@ function ViewCustomer() {
             </p>
 
             <table className='striped-table'>
-                <tr>
-                    <td>
-                        First Name
-                    </td>
-                    <td>
-                        {customer.first_name}
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Last Name
-                    </td>
-                    <td>
-                        {customer.last_name}
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Email
-                    </td>
-                    <td>
-                        {customer.email}
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Number Of Courses Completed
-                    </td>
-                    <td>
-                        {customer.number_courses_completed}
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Account Created
-                    </td>
-                    <td>
-                        {moment(customer.created).format('DD MMMM YYYY')}
-                    </td>
-                </tr>
+                <tbody>
+                    <tr>
+                        <td>
+                            First Name
+                        </td>
+                        <td>
+                            {customer.first_name}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Last Name
+                        </td>
+                        <td>
+                            {customer.last_name}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Email
+                        </td>
+                        <td>
+                            {customer.email}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Number Of Courses Completed
+                        </td>
+                        <td>
+                            {customer.number_courses_completed}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Account Created
+                        </td>
+                        <td>
+                            {moment(customer.created, 'YYYY-MM-DD').format('DD MMMM YYYY')}
+                        </td>
+                    </tr>
+                </tbody>
             </table>
             <div className='line-break'></div>
             {results ? <ResultsHistory results={results} /> : null}
