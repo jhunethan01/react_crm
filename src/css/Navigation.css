@@ -1,11 +1,9 @@
 section.navigation_container{
-    padding: 10px 0;
-    
     display: flex;
     flex-direction: column;
 
     height: auto;
-    width: 125px;
+    width: 200px;
 
     min-height: 100vh;
     
@@ -14,12 +12,11 @@ section.navigation_container{
 }
 
 .tab_link{
-    color: white;
+    color: rgb(127, 127, 127);
     cursor: pointer;
     text-align: center;
     height: 25px;
-    padding: 10px;
-    border-top: 1px solid grey;
+    padding: 10px 10px 10px 20px;
 
     transition: all 0.3s;
 
@@ -28,16 +25,43 @@ section.navigation_container{
     align-items: center;
 }
 
+.tab_link svg{
+    width: 25px;
+    font-size: 16px;
+}
+
 .navigation_container>*{
     text-decoration: none;
 }
 
 .tab_link:hover{
-    background: rgb(109, 109, 109);
+    color: white;
 }
 
 div.navigation_logo{
-    padding: 0 10px 10px 10px;   
+    height: 50px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+
+    display: flex;
+    
+    padding: 10px;   
     font-weight: bold;
     font-size: 20px;
+
+    background-color: #0095ff;
+}
+
+.active{
+    color:white;
+}
+
+.active::before{
+    content: "";
+    width: 4px;
+    height: 20px;
+    background-color: #0095ff;
+    position: absolute;
+    left: 0;
 }
